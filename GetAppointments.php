@@ -14,22 +14,41 @@ try {
     // pass value to the command
     $mykey = 1;
     $stmt->bindParam(1,$mykey, PDO::PARAM_INT, 10);
-    print "Values of bound parameters _before_ CALL:\n";
-    print "  1: {$mykey} \n";
+   // print "Values of bound parameters _before_ CALL:\n";
+ //   print "  1: {$mykey} \n";
     // execute the stored procedure
     $stmt->execute();
 
 
 
-    echo '</br>here!';
+    $ret = array();
     $i = 0;
     while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
-        $i = $i +1 ;
-      //  echo $row[0];
-        $data = $row[0] . "\t" . $row[1] . "\t" . $row[2] . "\n";
-        echo $data, '</br>';
+        $dayoftheweek = $row[0];
+        $theday = $row[1];
+        $id = $row[2];
+        $stylistId = $row[3];
+        $dayId = $row[4];
+        $starttime = $row[5];
+        $time = $row[6];
+        $apptime = $row[7];
+
+        $return_arr[] = array(
+
+            "dayoftheweek" => $dayoftheweek,
+            "theday" => $theday,
+            "id" => $id,
+            "stylistId" => $stylistId,
+            "dayId" => $dayId,
+                        "starttime" => $starttime,
+                        "time" => $time,
+                        "apptime" => $apptime);
+        $ret =  $return_arr;
     }
-    echo $i;
+    $qryResult = array();
+    $qryResult['data'] = $ret;
+    echo json_encode($qryResult);
+   
   }
 catch (PDOException $e) {
     print $e->getMessage();
