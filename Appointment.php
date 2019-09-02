@@ -241,7 +241,7 @@
         });
         function book(name, Phone, Style, Info, e) {
             var myId = e.id;
-
+            console.log("book: name: ", name);
             var aDate;
             var aTime;
 
@@ -259,12 +259,13 @@
 
             var Xexisting = $('#' + myId)
             var existing = $('#' + myId).text();
-            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: '@ViewBag.Stylist', date: aDate, time: aTime }
+            var currstylist = $('#mass1').html();
+            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: currstylist, date: aDate, time: aTime }
             existing = existing + ' ' + name;
             $('#' + myId).html(existing);
 
             $.ajax({
-                url: '@Url.Action("AddAppointment", "Home")',
+                url: 'AddAppointment.php',
                 type: 'GET',
                 dataType: 'html',
                 contentType: 'application/json; charset=utf-8',
@@ -278,6 +279,7 @@
         }
 
         function OnSuccess(response) {
+            console.log("Appointment Created on database!");
         }
         function OnErrorCall(jqXHR, textStatus, errorThrown) {
             debugger;
