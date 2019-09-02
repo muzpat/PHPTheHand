@@ -61,18 +61,26 @@
 
     </div>
     <div class="container">
-
+        <h2 style="align-content:center">Your Appointments:&nbsp;&nbsp; <label id="mass1"></label></h2>
         <table class="table table_condensed" id="Grid"></table>
     </div>
 
     <script type="text/javascript">
-
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
         $(document).ready(function () {
-
-            var myParam = 1;
+            var myurl = getUrlVars();
+            var myParam = myurl["stylist"];
+            myParam = decodeURIComponent(myParam);
+            console.log("url parameter: ", myParam);
             var mydata = { stylist: myParam };
             console.log("stylist.php: ");
-
+            $('#mass1').html(myParam);
 
             $.ajax({
                 url: 'GetAppointments.php',
@@ -84,7 +92,12 @@
                 cache: false,
                 async: true,
                 success: function (response) {
-                    console.log("ajax success: ");
+                //    console.log(JSON.stringify(JSON.parse(response)));
+              //      var data = $.parseJSON(response);
+                    console.log(response);
+                    var items = response;
+                   // console.log(items.data[0].id);
+                  //  console.log(" items.data.length: ", items.data.length);
                     var data = response;
                     //    $('#Grid').append('<table><tr><th>Date</th><th>Time</th><th>Stylist</th><th>Customer</th><th>Phone</th><th>Style</th><th>Info</th></tr>');
                     var today = '';
@@ -92,48 +105,49 @@
                     var laststarttime = 0;
                     var yesterday = ''
                     row = '<div  id="rw1" class="row">  ';
-                    for (var i = 0; i < data.length; ++i) {
+                    for (var i = 0; i < items.data.length; ++i) {
                         if (i == 0) {
 
-                            if (data[i].dayoftheweek == 1) {
+                            if (items.data[i].dayoftheweek == 1) {
                                 today = "Sunday";
-                            } else if (data[i].dayoftheweek == 2) {
+                            } else if (items.data[i].dayoftheweek == 2) {
                                 today = "Monday";
-                            } else if (data[i].dayoftheweek == 3) {
+                            } else if (items.data[i].dayoftheweek == 3) {
                                 today = "Tuesday";
-                            } else if (data[i].dayoftheweek == 4) {
+                            } else if (items.data[i].dayoftheweek == 4) {
                                 today = "Wednesday";
-                            } else if (data[i].dayoftheweek == 5) {
+                            } else if (items.data[i].dayoftheweek == 5) {
                                 today = "Thursday";
-                            } else if (data[i].dayoftheweek == 6) {
+                            } else if (items.data[i].dayoftheweek == 6) {
                                 today = "Friday";
-                            } else if (data[i].dayoftheweek == 7) {
+                            } else if (items.data[i].dayoftheweek == 7) {
                                 today = "Saturday";
                             } else {
                                 today = "n/a";
                             }
-                            yesterday = data[i].theday;
+                            console.log("today: ", today);
+                            yesterday = items.data[i].theday;
                             row = row + '<div>';   /// extra div
                             //column
                             row = row + '    <div id="col1" class="col">         <div class="card"   id="card2" style="width: 9rem;">            <div  id="ch2" class="card-header">';
-                            row = row + '<b>Today </b></br>' + dateformat(data[i].theday);
+                            row = row + '<b>Today </b></br>' + dateformat(items.data[i].theday);
                             row = row + '</div> <ul class="list-group list-group-flush"> ';
-                            yesterday = data[i].theday;
+                            yesterday = items.data[i].theday;
                         }
-                        if (data[i].theday != yesterday) {
-                            if (data[i].dayoftheweek == 1) {
+                        if (items.data[i].theday != yesterday) {
+                            if (items.data[i].dayoftheweek == 1) {
                                 today = "Sunday";
-                            } else if (data[i].dayoftheweek == 2) {
+                            } else if (items.data[i].dayoftheweek == 2) {
                                 today = "Monday";
-                            } else if (data[i].dayoftheweek == 3) {
+                            } else if (items.data[i].dayoftheweek == 3) {
                                 today = "Tuesday";
-                            } else if (data[i].dayoftheweek == 4) {
+                            } else if (items.data[i].dayoftheweek == 4) {
                                 today = "Wednesday";
-                            } else if (data[i].dayoftheweek == 5) {
+                            } else if (items.data[i].dayoftheweek == 5) {
                                 today = "Thursday";
-                            } else if (data[i].dayoftheweek == 6) {
+                            } else if (items.data[i].dayoftheweek == 6) {
                                 today = "Friday";
-                            } else if (data[i].dayoftheweek == 7) {
+                            } else if (items.data[i].dayoftheweek == 7) {
                                 today = "Saturday";
                             } else {
                                 today = "n/a";
@@ -142,24 +156,31 @@
                             row = row + '</div><div>';   /// extra div
                             //column
                             row = row + '    <div id="col1" class="col">         <div class="card"   id="card2" style="width: 9rem;">            <div  id="ch2" class="card-header">';
-                            row = row + '<b>' + today + ' </b></br>' + dateformat(data[i].theday);
+                            row = row + '<b>' + today + ' </b></br>' + dateformat(items.data[i].theday);
                             row = row + '</div> <ul class="list-group list-group-flush"> ';
-                            yesterday = data[i].theday;
+                            yesterday = items.data[i].theday;
                         }
-                        var situation = data[i].starttime + ':00 ' + data[i].name;
+                        var situation = items.data[i].starttime + ':00 ' + items.data[i].name;
                         if (situation.length > 6) {
                             //  situation = "Not Available";
                         }
-                        row = row + ' <li     class="list-group-item"><a  id="a' + data[i].theday.replace('/', '').replace('/', '') + data[i].apptime.replace(':', '') + '" data-date="' + data[i].theday + '" data-phone="' + data[i].phone + '" data-info="' + data[i].info + '"  data-style="' + data[i].style + '"  data-customer="' + data[i].name + '"  data-time="' + data[i].apptime + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
-                        laststarttime = data[i].apptime;
+                       // console.log("theday: ", items.data[i].theday);
+                       // console.log("apptime: ", items.data[i].apptime);
+                        var thetime = items.data[i].apptime;
+                        if (items.data[i].apptime == null) {
+                            items.data[i].apptime = '99';
+                        }
+                            row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].apptime.replace(':', '') + '" data-date="' + items.data[i].theday + '" data-phone="' + items.data[i].phone + '" data-info="' + items.data[i].info + '"  data-style="' + items.data[i].style + '"  data-customer="' + items.data[i].name + '"  data-time="' + items.data[i].apptime + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
+                  
+                        laststarttime = items.data[i].apptime;
                     }
                     row = row + '</div> </div></div>'
                     row = row + '<div>';   /// extra div
                     $('#Grid').append(row);
 
-                    for (var i = 0; i < data.length; ++i) {
+                    for (var i = 0; i < items.data.length; ++i) {
 
-                        var myId = 'a' + data[i].theday.replace('/', '').replace('/', '') + data[i].apptime.replace(':', '');
+                        var myId = 'a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].apptime.replace(':', '');
                         $('#' + myId).attr('onClick', 'linkaction(this);');
 
                     }

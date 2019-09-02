@@ -61,7 +61,7 @@
 
     </div>
     <div class="container">
-
+        <h5>All Bookings</h5>
         <table class="table table_condensed" id="Grid"></table>
     </div>
 

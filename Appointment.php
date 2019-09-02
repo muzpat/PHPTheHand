@@ -7,12 +7,13 @@
     <meta name="author" content="" />
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
 
+
     <title></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/pricing/" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -20,10 +21,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.position.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!--    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" />-->
 
     <!-- Custom styles for this template -->
-    <link href="pricing.css" rel="stylesheet" />
+    <!--   <link href="pricing.css" rel="stylesheet" />-->
+
     <style>
 .ui-dialog {
    top: 300px;
@@ -48,18 +50,23 @@
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>
-            <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
+            <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+            <!--           <a class="
+                p-2 text-dark" onclick="whoamI(this)" href="#">
+                Massage Therapist's Page
+            </a>
 
-            <a class="p-2 text-dark" href="/Home/Management">Management Admin</a>
+            <a class="p-2 text-dark" href="Management.php">Management Admin</a>
             <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
-            <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>
+            <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
         </nav>
 
     </div>
 
     <div class="container">
-
+        <h2 style="align-content:center">
+            Book with:&nbsp; <label id="mass1"></label>
+        </h2>
         <table class="table table_condensed" id="Grid"></table>
     </div>
 
@@ -73,71 +80,77 @@
             return vars;
         }
         $(document).ready(function () {
-            var myParam = getUrlVars()["stylist"];
-            alert(myParam);
+            var result3 = getUrlVars();
+         //   console.log("stylist: ", result3["stylist"]);
+            var myParam = result3["stylist"];
+            myParam = decodeURIComponent(myParam);
+            $('#mass1').html(myParam);
+           // alert("stylist: " + myParam);
+          //  console.log("stylist: ", myParam);
+        
             var mydata = { stylist: myParam };
 
             $.ajax({
-                url: '@Url.Action("GetAppointmentPage", "Home")',
+                url: "GetAppointmentPage.php",
                 type: "GET",
                 cache: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
                 data: mydata,
-                cache: false,
                 async: true,
                 success: function (response) {
-
-                    var data = response;
+                    console.log("ajax successful");
+                    console.log(response);
+                    var items = response;
                     //    $('#Grid').append('<table><tr><th>Date</th><th>Time</th><th>Stylist</th><th>Customer</th><th>Phone</th><th>Style</th><th>Info</th></tr>');
                     var today = '';
                     var row = '';
                     var laststarttime = 0;
                     var yesterday = ''
                     row = '<div  id="rw1" class="row">  ';
-                    for (var i = 0; i < data.length; ++i) {
-                        if (i == 0)
-                        {
+                    for (var i = 0; i < items.data.length; ++i) {
+                        console.log("items.data.length: ", items.data.length);
+                        if (i == 0) {
 
-                            if (data[i].dayoftheweek == 1) {
+                            if (items.data[i].dayoftheweek == 1) {
                                 today = "Sunday";
-                            } else if (data[i].dayoftheweek == 2) {
+                            } else if (items.data[i].dayoftheweek == 2) {
                                 today = "Monday";
-                            } else if (data[i].dayoftheweek == 3) {
+                            } else if (items.data[i].dayoftheweek == 3) {
                                 today = "Tuesday";
-                            } else if (data[i].dayoftheweek == 4) {
+                            } else if (items.data[i].dayoftheweek == 4) {
                                 today = "Wednesday";
-                            } else if (data[i].dayoftheweek == 5) {
+                            } else if (items.data[i].dayoftheweek == 5) {
                                 today = "Thursday";
-                            } else if (data[i].dayoftheweek == 6) {
+                            } else if (items.data[i].dayoftheweek == 6) {
                                 today = "Friday";
-                            } else if (data[i].dayoftheweek == 7) {
+                            } else if (items.data[i].dayoftheweek == 7) {
                                 today = "Saturday";
                             } else {
                                 today = "n/a";
                             }
-                            yesterday = data[i].theday;
+                            yesterday = items.data[i].theday;
                             row = row + '<div>';   /// extra div
                             //column
                             row = row + '    <div id="col1" class="col">         <div class="card"   id="card2" style="width: 9rem;">            <div  id="ch2" class="card-header">';
-                            row = row + '<b>Today </b></br>' + dateformat(data[i].theday);
+                            row = row + '<b>Today </b></br>' + dateformat(items.data[i].theday);
                             row = row + '</div> <ul class="list-group list-group-flush"> ';
-                            yesterday = data[i].theday;
+                            yesterday = items.data[i].theday;
                         }
-                        if (data[i].theday != yesterday) {
-                            if (data[i].dayoftheweek == 1) {
+                        if (items.data[i].theday != yesterday) {
+                            if (items.data[i].dayoftheweek == 1) {
                                 today = "Sunday";
-                            } else if (data[i].dayoftheweek == 2) {
+                            } else if (items.data[i].dayoftheweek == 2) {
                                 today = "Monday";
-                            } else if (data[i].dayoftheweek == 3) {
+                            } else if (items.data[i].dayoftheweek == 3) {
                                 today = "Tuesday";
-                            } else if (data[i].dayoftheweek == 4) {
+                            } else if (items.data[i].dayoftheweek == 4) {
                                 today = "Wednesday";
-                            } else if (data[i].dayoftheweek == 5) {
+                            } else if (items.data[i].dayoftheweek == 5) {
                                 today = "Thursday";
-                            } else if (data[i].dayoftheweek == 6) {
+                            } else if (items.data[i].dayoftheweek == 6) {
                                 today = "Friday";
-                            } else if (data[i].dayoftheweek == 7) {
+                            } else if (items.data[i].dayoftheweek == 7) {
                                 today = "Saturday";
                             } else {
                                 today = "n/a";
@@ -146,35 +159,43 @@
                             row = row + '</div><div>';   /// extra div
                             //column
                             row = row + '    <div id="col1" class="col">         <div class="card"   id="card2" style="width: 9rem;">            <div  id="ch2" class="card-header">';
-                            row = row + '<b>' + today + ' </b></br>' +  dateformat(data[i].theday);
+                            row = row + '<b>' + today + ' </b></br>' + dateformat(items.data[i].theday);
                             row = row + '</div> <ul class="list-group list-group-flush"> ';
-                            yesterday = data[i].theday;
+                            yesterday = items.data[i].theday;
                         }
 
-                        var situation = data[i].time + ':00 ';  // + data[i].customer;
-                        if (data[i].apptime.length > 0) {
-                            situation = data[i].time + ':00 ' + " not available";
+                        var situation = items.data[i].time + ':00 ';  // + items.data[i].customer;
+                        if (items.data[i].apptime != 99 && items.data[i].apptime != null) {
+                            console.log("not 99 items.data[i].theday: ", items.data[i].theday);
+                            console.log("not 99 items.data[i].apptime: ", items.data[i].apptime);
+                            situation = items.data[i].time + ':00 ' + " not available";
                         }
                         if (situation.length > 6) {
                             //  situation = "Not Available";
                         }
-                        if (data[i].time != 99) {
-                            row = row + ' <li     class="list-group-item"><a  id="a' + data[i].theday.replace('/', '').replace('/', '') + data[i].time.replace(':', '') + '" data-date="' + data[i].theday + '"  data-time="' + data[i].time + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
+                        if (items.data[i].time != 99 && items.data[i].time != null) {
+             
+                            row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '') + '" data-date="' + items.data[i].theday + '"  data-time="' + items.data[i].time + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
                         }
-                        laststarttime = data[i].time;
+                        laststarttime = items.data[i].time;
                     }
                     row = row + '</div> </div></div>'
                     row = row + '<div>';   /// extra div
                     $('#Grid').append(row);
 
-                    for (var i = 0; i < data.length; ++i) {
+                    for (var i = 0; i < items.data.length; ++i) {
 
-                        var myId = 'a' + data[i].theday.replace('/', '').replace('/', '') + data[i].time.replace(':', '');
+                        var myId = 'a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '');
                         $('#' + myId).attr('onClick', 'linkaction(this);');
 
                     }
                 },
-                error: OnErrorCall
+                error: function (xhr) {
+                    console.log("ajax fail!", xhr.statusText);
+                    debugger;
+                    alert('Request Status ' + xhr.status + ' Status Text (a) ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+                //error: OnErrorCall
             })
 
         });
@@ -207,9 +228,9 @@
             // myLoop();
         }
         function OnErrorCall(jqXHR, textStatus, errorThrown) {
-            debugger;
-            alert(jqXHR.responseText);
             console.log("error - Ajax call has failed: <br />Err: " + errorThrown + "<br />textStatus: " + textStatus + "<br />ResponseText: " + jqXHR.responseText);
+            alert(jqXHR.responseText);
+            //console.log("error - Ajax call has failed: <br />Err: " + errorThrown + "<br />textStatus: " + textStatus + "<br />ResponseText: " + jqXHR.responseText);
         }
 
         $(".mylink").click(function (e) {
