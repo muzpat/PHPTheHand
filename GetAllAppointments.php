@@ -2,12 +2,16 @@
 // Include the json class
 //include('includes/json.php');
 //header('Content-type:application/json');
-$con = mysql_connect("localhost", "root", "mysql");
+$host = '213.171.200.101:3306';
+$dbname = 'TheHand';
+$username = 'Hand123';
+$password = 'Daisy123';
+$con = mysql_connect($host, $username, $password);
 if (!$con)
 {
     die('Could not connect: ' . mysql_error());
 }
-$db_selected = mysql_select_db("TheHand",$con);
+$db_selected = mysql_select_db($dbname,$con);
 $sql = "CALL spAllAppointments()";
 $result = mysql_query($sql,$con);
 
@@ -45,6 +49,7 @@ while ($row =  mysql_fetch_row($result))
     $ret =  $return_arr;
 
 };
+mysql_close($con);
 
 
 $qryResult = array();
@@ -54,7 +59,6 @@ echo json_encode($qryResult);
 
 
 
-mysql_close($con);
 
 // new
 

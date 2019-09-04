@@ -36,28 +36,31 @@
     </head>
 
     <body>
-        <div>
+        <div class="container">
+            <div>
 
 
-            <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
-                <h5 class="my-0 mr-md-auto font-weight-normal">
-                    <a href="#" onclick="window.location.href = 'index.php'">
-                        <img width="567" height="144" src="listening1.gif" border="0" />
-                    </a>
-                </h5>
-            </div>
-            <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
+                <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
+                    <h5 class="my-0 mr-md-auto font-weight-normal">
+                        <a href="#" onclick="window.location.href = 'index.php'">
+                            <img width="567" height="144" src="listening1.gif" border="0" />
+                        </a>
+                    </h5>
+                </div>
+                <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
 
 
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-                <nav class="my-2 my-md-0 mr-md-3">
-                    <a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>
-                    <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
+                <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+                    <nav class="my-2 my-md-0 mr-md-3">
+                        <a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>
+                        <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
 
-                    <a class="p-2 text-dark" href="Management.php">Management Admin</a>
-                    <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
-                    <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>
-                </nav>
+                        <a class="p-2 text-dark" href="Management.php">Management Admin</a>
+                        <a class="p-2 text-dark" href="Blog.php">Blog</a>
+                        <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>
+                    </nav>
+
+                </div>
 
             </div>
 

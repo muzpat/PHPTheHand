@@ -1,7 +1,8 @@
 <?php // test1.php
-  $username = "Fred Smith";
-  echo $username;
-  echo "<br>";
-  $current_user = $username;
-  echo $current_user;
+
+require 'getstylists.php';
+$mass =getStylists();
+foreach ($mass as $mas) {
+    echo "<option id = '".$mas['id']."'>".$mas['name']."</option>";
+}
 ?>

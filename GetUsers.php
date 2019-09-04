@@ -1,8 +1,25 @@
 <?php
-$host = 'localhost';
+
+require 'getstylists.php';
+$stylist = $_GET['stylist'];
+//  $stylist = 2;
+//  echo $stylist;
+$id;
+$myresult =  getStylists();
+foreach ($myresult as $sty) {
+    //  echo "</br>Id: ".$sty['id'].   " name: ".$sty['name']."   ";
+    if ($stylist == $sty['name']) {
+        //   echo "</br>Id: ".$sty['id'].   " name: ".$sty['name']."   ";
+        $id = $sty['id'];
+    }
+}
+
+
+
+$host = '213.171.200.101:3306';
 $dbname = 'TheHand';
-$username = 'root';
-$password = 'mysql';
+$username = 'Hand123';
+$password = 'Daisy123';
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
 // calling stored procedure command
@@ -12,7 +29,7 @@ try {
     $stmt = $pdo->prepare($sql);
 
     // pass value to the command
-    $mykey = 1;
+    $mykey = $id;
     $stmt->bindParam(1,$mykey, PDO::PARAM_INT, 10);
     // print "Values of bound parameters _before_ CALL:\n";
    //    print "  1: {$mykey} \n";

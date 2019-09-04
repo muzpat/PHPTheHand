@@ -35,21 +35,21 @@
 
 <body>
 
+    <div class="container">
+        <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">
+                <a href="#" onclick="window.location.href = 'index.php';">
+                    <img width="567" height="144" src="listening1.gif" border="0" />
+                </a>
+            </h5>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
 
-    <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">
-            <a href="#" onclick="window.location.href = 'index.php';">
-                <img width="567" height="144" src="listening1.gif" border="0" />
-            </a>
-        </h5>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
 
-
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a href="#" onclick="window.location.href = 'index.php';">Home</a>
- <!--           <a class="
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                <!--           <a class="
                 p-2 text-dark" onclick="whoamI(this)" href="#">
                 Massage Therapist's Page
             </a>
@@ -57,131 +57,131 @@
             <a class="p-2 text-dark" href="Management.php">Management Admin</a>
             <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
             <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
-        </nav>
+            </nav>
+        </div>
+        </div>
+        <div class="container">
+            <h5>All Bookings</h5>
+            <table class="table table_condensed" id="Grid"></table>
+        </div>
 
-    </div>
-    <div class="container">
-        <h5>All Bookings</h5>
-        <table class="table table_condensed" id="Grid"></table>
-    </div>
+        <script type="text/javascript">
+            var Todayx = '<?php     echo date("Y/m/d")   ?>';
 
-    <script type="text/javascript">
-        var Todayx = '<?php     echo date("Y/m/d")   ?>';
-
-        $(document).ready(function () {
-             $.ajax({
-                 type: "POST",
-                 cache: false,
-                url: 'GetAllAppointments.php',
-                data: $(this).serialize(),
-                 success: OnSuccess,
-                // success: function (response)
-               //  {
-                  //   console.log(JSON.stringify(JSON.parse(response)));
-                 //    var items = JSON.parse(response);
-                  //   console.log(items.data[0].id);
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: 'AllApps.php',
+                    data: $(this).serialize(),
+                    success: OnSuccess,
+                    // success: function (response)
+                    //  {
+                    //   console.log(JSON.stringify(JSON.parse(response)));
+                    //    var items = JSON.parse(response);
+                    //   console.log(items.data[0].id);
                     // var len = items.count;
-                   //  console.log("count: " + items.data[0].count);
-                 //   alert(items.data[0][2]);               
-               // },
-                 error: function (jqXHR, exception) {
-                     var msg = '';
-                     if (jqXHR.status === 0) {
-                         msg = 'Not connect.\n Verify Network.';
-                     } else if (jqXHR.status == 404) {
-                         msg = 'Requested page not found. [404]';
-                     } else if (jqXHR.status == 500) {
-                         msg = 'Internal Server Error [500].';
-                     } else if (exception === 'parsererror') {
-                         msg = 'Requested JSON parse failed.';
-                     } else if (exception === 'timeout') {
-                         msg = 'Time out error.';
-                     } else if (exception === 'abort') {
-                         msg = 'Ajax request aborted.';
-                     } else {
-                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                     }
-                     alert(msg);
-                 },
+                    //  console.log("count: " + items.data[0].count);
+                    //   alert(items.data[0][2]);
+                    // },
+                    error: function (jqXHR, exception) {
+                        var msg = '';
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        alert(msg);
+                    },
+                });
+                // alert("after ajax");
             });
-           // alert("after ajax");
-        });
 
 
-        function OnSuccess(response) {
-            console.log("OnSuccess(response) ");
-            console.log(JSON.stringify(JSON.parse(response)));
-            var data = $.parseJSON(response);
-            var items = JSON.parse(response);
-            console.log(items.data[0].id);
-            console.log(" items.data.length: " , items.data.length);
-            //   alert(data.BeeHive[0].beeType);
-            var row;
-            row = '<table><tr><th>Day</th><th>Date</th><th>Time</th><th>Stylist</th><th>Customer</th><th>Phone</th><th>Style</th><th>Info</th></tr>';
-            
-            for (var i = 0; i < items.data.length; ++i) {
-                console.log("items.data[i].dayId: ", items.data[i].dayId);
-                if (items.data[i].dayId == 1) {
-                    today = "Sunday";
-                } else if (items.data[i].dayId == 2) {
-                    today = "Monday";
-                } else if (items.data[i].dayId == 3) {
-                    today = "Tuesday";
-                } else if (items.data[i].dayId == 4) {
-                    today = "Wednesday";
-                } else if (items.data[i].dayId == 5) {
-                    today = "Thursday";
-                } else if (items.data[i].dayId == 6) {
-                    today = "Friday";
-                } else if (items.data[i].dayId == 7) {
-                    today = "Saturday";
+            function OnSuccess(response) {
+                console.log("OnSuccess(response) ");
+                console.log(JSON.stringify(JSON.parse(response)));
+                var data = $.parseJSON(response);
+                var items = JSON.parse(response);
+                console.log(items.data[0].id);
+                console.log(" items.data.length: ", items.data.length);
+                //   alert(data.BeeHive[0].beeType);
+                var row;
+                row = '<table><tr><th>Day</th><th>Date</th><th>Time</th><th>Stylist</th><th>Customer</th><th>Phone</th><th>Style</th><th>Info</th></tr>';
+
+                for (var i = 0; i < items.data.length; ++i) {
+                    console.log("items.data[i].dayId: ", items.data[i].dayId);
+                    if (items.data[i].dayId == 1) {
+                        today = "Sunday";
+                    } else if (items.data[i].dayId == 2) {
+                        today = "Monday";
+                    } else if (items.data[i].dayId == 3) {
+                        today = "Tuesday";
+                    } else if (items.data[i].dayId == 4) {
+                        today = "Wednesday";
+                    } else if (items.data[i].dayId == 5) {
+                        today = "Thursday";
+                    } else if (items.data[i].dayId == 6) {
+                        today = "Friday";
+                    } else if (items.data[i].dayId == 7) {
+                        today = "Saturday";
+                    } else {
+                        today = "n/a";
+                    }
+                    console.log(" today: ", today);
+                    var datecmp = dateformat(items.data[i].appdate);
+                    if (datecmp == Todayx) {
+                        today = "Today";
+                    }
+
+                    row = row + '<tr bgcolor="#42f489"><td>' + today + '</td><td>' + dateformat(items.data[i].appdate) + '</td><td>' + items.data[i].apptime + ":00" + '</td><td>'
+                        + items.data[i].stylist + '</td><td>' + items.data[i].name + '</td><td>' + items.data[i].phone + '</td><td>'
+                        + items.data[i].style + '</td><td>' + items.data[i].info + '</td><td>'
+                        + '</td></tr>';
+                }
+                row = row + '</table>';
+                $('#Grid').append(row);
+                // myLoop();
+            }
+
+            function OnErrorCall(jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
                 } else {
-                    today = "n/a";
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
                 }
-                console.log(" today: " , today);
-                var datecmp = dateformat(items.data[i].appdate);
-                if (datecmp == Todayx) {
-                    today = "Today";
-                }
-
-                row = row + '<tr bgcolor="#42f489"><td>' + today + '</td><td>' + dateformat(items.data[i].appdate) + '</td><td>' + items.data[i].apptime + ":00" + '</td><td>'
-                    + items.data[i].stylist + '</td><td>' + items.data[i].name + '</td><td>' + items.data[i].phone + '</td><td>'
-                    + items.data[i].style + '</td><td>' + items.data[i].info + '</td><td>'
-                    + '</td></tr>';
             }
-            row = row + '</table>';
-            $('#Grid').append(row);
-            // myLoop();
-        }
 
-        function OnErrorCall(jqXHR, exception) {
-            var msg = '';
-            if (jqXHR.status === 0) {
-                msg = 'Not connect.\n Verify Network.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            function dateformat(roughdate) {
+
+                var yr = roughdate.substring(0, 4);
+                var mnth = roughdate.substring(4, 6);
+                var days = roughdate.substring(6, 8);
+                return days + "/" + mnth + "/" + yr;
             }
-        }
 
-        function dateformat(roughdate) {
-
-            var yr = roughdate.substring(0, 4);
-            var mnth = roughdate.substring(4, 6);
-            var days = roughdate.substring(6, 8);
-            return days + "/" + mnth + "/" + yr;
-        }
-
-    </script>
+        </script>
 
 
 </body>

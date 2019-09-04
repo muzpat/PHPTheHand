@@ -36,22 +36,22 @@
 </head>
 
 <body>
+    <div class="container">
+
+        <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">
+                <a href="#" onclick="window.location.href = 'index.php';">
+                    <img width="567" height="144" src="listening1.gif" border="0" />
+                </a>
+            </h5>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
 
 
-    <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">
-            <a href="#" onclick="window.location.href = 'index.php';">
-                <img width="567" height="144" src="listening1.gif" border="0" />
-            </a>
-        </h5>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
-
-
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a href="#" onclick="window.location.href = 'index.php';">Home</a>
-            <!--           <a class="
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                <!--           <a class="
                 p-2 text-dark" onclick="whoamI(this)" href="#">
                 Massage Therapist's Page
             </a>
@@ -59,19 +59,20 @@
             <a class="p-2 text-dark" href="Management.php">Management Admin</a>
             <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
             <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
-        </nav>
+            </nav>
+        </div>
+        </div>
 
-    </div>
+        <div class="container">
+            <h2 style="align-content:center">
+                Book with:&nbsp;
+                <label id="mass1"></label>
+            </h2>
+            <table class="table table_condensed" id="Grid"></table>
+        </div>
 
-    <div class="container">
-        <h2 style="align-content:center">
-            Book with:&nbsp; <label id="mass1"></label>
-        </h2>
-        <table class="table table_condensed" id="Grid"></table>
-    </div>
 
-
-    <script type="text/javascript">
+        <script type="text/javascript">
         function getUrlVars() {
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -87,7 +88,7 @@
             $('#mass1').html(myParam);
            // alert("stylist: " + myParam);
           //  console.log("stylist: ", myParam);
-        
+
             var mydata = { stylist: myParam };
 
             $.ajax({
@@ -174,7 +175,7 @@
                             //  situation = "Not Available";
                         }
                         if (items.data[i].time != 99 && items.data[i].time != null) {
-             
+
                             row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '') + '" data-date="' + items.data[i].theday + '"  data-time="' + items.data[i].time + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
                         }
                         laststarttime = items.data[i].time;
@@ -260,10 +261,11 @@
             var Xexisting = $('#' + myId)
             var existing = $('#' + myId).text();
             var currstylist = $('#mass1').html();
-            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: currstylist, date: aDate, time: aTime }
+            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: currstylist, date: aDate, time: aTime };
+            var displaydata = JSON.stringify(myData);
             existing = existing + ' ' + name;
             $('#' + myId).html(existing);
-
+            console.log("Appointment. About to call ajax...AddAppointment.php", displaydata);
             $.ajax({
                 url: 'AddAppointment.php',
                 type: 'GET',
@@ -349,7 +351,7 @@
             }
         }
 
-    </script>
+        </script>
 
 
 </body>

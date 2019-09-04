@@ -34,22 +34,22 @@
 </head>
 
 <body>
+    <div class="container">
+
+        <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">
+                <a href="#" onclick="window.location.href = 'index.php';">
+                    <img width="567" height="144" src="listening1.gif" border="0" />
+                </a>
+            </h5>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
 
 
-    <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">
-            <a href="#" onclick="window.location.href = 'index.php';">
-                <img width="567" height="144" src="listening1.gif" border="0" />
-            </a>
-        </h5>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
-
-
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a href="#" onclick="window.location.href = 'index.php';">Home</a>
-            <!--           <a class="
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                <!--           <a class="
                 p-2 text-dark" onclick="whoamI(this)" href="#">
                 Massage Therapist's Page
             </a>
@@ -57,15 +57,20 @@
             <a class="p-2 text-dark" href="Management.php">Management Admin</a>
             <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
             <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
-        </nav>
+            </nav>
+
+        </div>
 
     </div>
-    <div class="container">
-        <h2 style="align-content:center">Your Appointments:&nbsp;&nbsp; <label id="mass1"></label></h2>
-        <table class="table table_condensed" id="Grid"></table>
-    </div>
+        <div class="container">
+            <h2 style="align-content:center">
+                Your Appointments:&nbsp;&nbsp;
+                <label id="mass1"></label>
+            </h2>
+            <table class="table table_condensed" id="Grid"></table>
+        </div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
         function getUrlVars() {
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -160,7 +165,13 @@
                             row = row + '</div> <ul class="list-group list-group-flush"> ';
                             yesterday = items.data[i].theday;
                         }
-                        var situation = items.data[i].starttime + ':00 ' + items.data[i].name;
+                        var customername;
+                        customername = items.data[i].name;
+                        if (customername == 'null' || customername === null) {
+                            customername = '';
+                        }
+                        var situation = items.data[i].starttime + ':00 ' + customername;
+                    //    console.log("customername: ", customername);
                         if (situation.length > 6) {
                             //  situation = "Not Available";
                         }
@@ -171,7 +182,7 @@
                             items.data[i].apptime = '99';
                         }
                             row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].apptime.replace(':', '') + '" data-date="' + items.data[i].theday + '" data-phone="' + items.data[i].phone + '" data-info="' + items.data[i].info + '"  data-style="' + items.data[i].style + '"  data-customer="' + items.data[i].name + '"  data-time="' + items.data[i].apptime + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
-                  
+
                         laststarttime = items.data[i].apptime;
                     }
                     row = row + '</div> </div></div>'
@@ -360,7 +371,7 @@
             }
         }
 
-    </script>
+        </script>
 </body>
 </html>
 

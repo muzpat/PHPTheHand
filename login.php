@@ -1,8 +1,7 @@
 <?php // test1.php
-$hn = 'localhost';
-$db = 'TheHand';
-$un = 'root';
-$pw = 'mysql';
-
+$host = '213.171.200.101:3306';
+$dbname = 'TheHand';
+$username = 'Hand123';
+$password = 'Daisy123';
 
 ?>

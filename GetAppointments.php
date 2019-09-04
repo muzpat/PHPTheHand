@@ -14,14 +14,14 @@ foreach ($myresult as $sty) {
 }
 
 
-$host = 'localhost';
+$host = '213.171.200.101:3306';
 $dbname = 'TheHand';
-$username = 'root';
-$password = 'mysql';
+$username = 'Hand123';
+$password = 'Daisy123';
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
 // calling stored procedure command
-$sql = 'CALL TheHand.spGetBookings(?)';
+$sql = 'CALL spGetBookings(?)';
 try {
     // prepare for execution of the stored procedure
     $stmt = $pdo->prepare($sql);
