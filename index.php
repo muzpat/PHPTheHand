@@ -31,13 +31,22 @@
    top: 300px;
    left: 500px !important;
 }
+.photo {
+display: flex;
+justify-content: center;
+}
+
+            .wrapper {
+                display: flex;
+                justify-content: center;
+            }
         </style>
 
     </head>
 
     <body>
         <div class="container">
-            <div>
+            <div class="wrapper">
 
 
                 <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
@@ -65,49 +74,40 @@
             </div>
 
         </div>
+        <div class="photo">
+            <img src="/images/backmassage.png" alt="Smiley face" height="315" width="468" />
+        </div>
             <div class="container">
                 <div class="card-deck mb-3 text-center">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">On-Site</h4>
-                        </div>
+                    <div class=" mb-4 ">
+                  
+     
                         <div class="card-body">
-                            <h2 class="card-title pricing-card-title">
-                                <small class="text-muted">On-Site Massage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>
-                            </h2>
+       
 
-                            <button type="button" onclick="window.location.href = 'Facts.php';" class="btn btn-lg btn-block btn-primary">Details</button>
+                            <button type="button" onclick="window.location.href = 'Facts.php';" class="btn btn-lg btn-block btn-primary">On-Site Massage</button>
                         </div>
                     </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Therapeutic</h4>
-                        </div>
+                    <div class=" mb-4 ">
+   
                         <div class="card-body">
-                            <h2 class="card-title pricing-card-title">
-                                <small class="text-muted">Therapeutic Massage</small>
-                            </h2>
-
-                            <button type="button" onclick="window.location.href = 'Therapeutic.pnp';" class="btn btn-lg btn-block btn-primary">Details</button>
+         
+                            <button type="button" onclick="window.location.href = 'Therapeutic.pnp';" class="btn btn-lg btn-block btn-primary">Therapeutic</button>
                         </div>
                     </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Costs</h4>
-                        </div>
+                    <div class="mb-4 ">
+      
                         <div class="card-body">
-                            <h2 class="card-title pricing-card-title">
-                                <small class="text-muted">Costings</small>
-                            </h2>
+      
 
-                            <button type="button" onclick="btCosts();" class="btn btn-lg btn-block btn-primary">Details</button>
+                            <button type="button" onclick="btCosts();" class="btn btn-lg btn-block btn-primary">Costings</button>
                         </div>
                     </div>
                 </div>
 
                 <footer class="pt-4 my-md-5 pt-md-5 border-top">
                     <div class="row">
-                        <div class="col-12 col-md"></div>
+      
                         <div class="col-6 col-md">
                             <h5>Contact Us</h5>
                             <ul class="list-unstyled text-small">
