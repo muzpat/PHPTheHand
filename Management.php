@@ -25,48 +25,84 @@
     <!-- Custom styles for this template -->
  <!--   <link href="pricing.css" rel="stylesheet" />-->
     <style>
-.ui-dialog {
-   top: 300px;
-   left: 500px !important;
-}
+			.ui-dialog {
+				top: 300px;
+				left: 500px !important;
+			}
+
+			.photo {
+				display: flex;
+				justify-content: center;
+			}
+
+			.header {
+				display: flex;
+				flex-flow: row wrap;
+				font-weight: bold;
+				text-align: center;
+				flex-direction: column;
+			}
+
+			.footrow {
+				display: flex;
+				flex-flow: row wrap;
+				font-weight: bold;
+				text-align: center;
+				flex-direction: row;
+				justify-content: center;
+			}
+
+			.footer {
+				display: flex;
+				justify-content: space-between;
+			}
+
+
+			.xrow {
+				width: 100%;
+				display: flex;
+				justify-content: space-around;
+				flex-direction: row;
+			}
+            .row-item {
+                align-content: center;
+            }
     </style>
 
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
+    <header class="header">
+
+        <div class="headitem">
             <h5 class="my-0 mr-md-auto font-weight-normal">
-                <a href="#" onclick="window.location.href = 'index.php';">
+                <a href="#" onclick="window.location.href = 'Index.php'">
                     <img width="567" height="144" src="listening1.gif" border="0" />
                 </a>
             </h5>
         </div>
-        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
-
-
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <div>
             <nav class="my-2 my-md-0 mr-md-3">
-                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
-                <!--           <a class="
-                p-2 text-dark" onclick="whoamI(this)" href="#">
-                Massage Therapist's Page
-            </a>
+                <!--<a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>-->
+                <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
 
-            <a class="p-2 text-dark" href="Management.php">Management Admin</a>
-            <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
-            <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
+                <a class="p-2 text-dark" href="Management.php">Management Admin</a>
+                <a class="p-2 text-dark" href="Blog.php">Blog</a>
+                <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>
             </nav>
         </div>
-        </div>
+
+
+    </header>
+
         <div class="container">
             <h5>All Bookings</h5>
             <table class="table table_condensed" id="Grid"></table>
         </div>
 
         <script type="text/javascript">
-            var Todayx = '<?php     echo date("Y/m/d")   ?>';
+            var Todayx = '<?php     echo date("d/m/Y")   ?>';
 
             $(document).ready(function () {
                 $.ajax({
@@ -138,16 +174,25 @@
                     } else {
                         today = "n/a";
                     }
-                    console.log(" today: ", today);
+                    console.log(" today: ", Todayx);
+
                     var datecmp = dateformat(items.data[i].appdate);
+                    console.log(" datecmp: ", datecmp);
                     if (datecmp == Todayx) {
                         today = "Today";
                     }
-
-                    row = row + '<tr bgcolor="#42f489"><td>' + today + '</td><td>' + dateformat(items.data[i].appdate) + '</td><td>' + items.data[i].apptime + ":00" + '</td><td>'
-                        + items.data[i].stylist + '</td><td>' + items.data[i].name + '</td><td>' + items.data[i].phone + '</td><td>'
-                        + items.data[i].style + '</td><td>' + items.data[i].info + '</td><td>'
-                        + '</td></tr>';
+                    if (Todayx == datecmp) {
+                        row = row + '<tr bgcolor="#E8E8E5"><td>' + today + '</td><td>' + dateformat(items.data[i].appdate) + '</td><td>' + items.data[i].apptime + ":00" + '</td><td>'
+                            + items.data[i].stylist + '</td><td>' + items.data[i].name + '</td><td>' + items.data[i].phone + '</td><td>'
+                            + items.data[i].style + '</td><td>' + items.data[i].info + '</td><td>'
+                            + '</td></tr>';
+                    } else {
+                        row = row + '<tr bgcolor="#42f489"><td>' + today + '</td><td>' + dateformat(items.data[i].appdate) + '</td><td>' + items.data[i].apptime + ":00" + '</td><td>'
+                            + items.data[i].stylist + '</td><td>' + items.data[i].name + '</td><td>' + items.data[i].phone + '</td><td>'
+                            + items.data[i].style + '</td><td>' + items.data[i].info + '</td><td>'
+                            + '</td></tr>';
+                    }
+             
                 }
                 row = row + '</table>';
                 $('#Grid').append(row);

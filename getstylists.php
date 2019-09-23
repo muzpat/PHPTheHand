@@ -10,7 +10,7 @@
   $query = "SELECT * FROM TheHand.stylists";
   $result = $conn->query($query);
   $rows = $result->num_rows;
-  debugger;
+
   return $result;
   }
 ?>

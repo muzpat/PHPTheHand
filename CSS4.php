@@ -87,13 +87,14 @@
             padding: 2em;
         }
         .foot-container {
-            width: 900px;
+            width: 100%;
             display: flex;
-            justify-content: center; /* Change this */
+            justify-content: space-around; /* Change this */
             flex-wrap: wrap;
             flex-direction: row;
             align-items: center; /* Add this */
         }
+
 
     </style>
 </head>
@@ -130,41 +131,25 @@
         <footer class="footer">
             <div class="foot-container">
   
-                    <div class="footitem">
-                        <h5>Contact Us</h5>
-                        <ul class="list-unstyled text-small">
-                            <li>
+                    <div class="footitem firstitem">
+                 
                                 <a class="text-muted" onclick="Contact();" href="#">Contact</a>
-                            </li>
-
-                        </ul>
+                       
                     </div>
                     <div class="footitem">
-                        <h5>References</h5>
-                        <ul class="list-unstyled text-small">
-                            <li>
+             
                                 <a class="text-muted" onclick="window.location.href = 'Testimonials.php';" href="#">Testimonials</a>
-                            </li>
-
-                        </ul>
+         
                     </div>
                     <div class="footitem">
-                        <h5>Jobs</h5>
-                        <ul class="list-unstyled text-small">
-                            <li>
+         
                                 <a class="text-muted" onclick="recruitment(this)" href="#">Recruitment</a>
-                            </li>
-
-                        </ul>
+        
                     </div>
-                    <div class="footitem">
-                        <h5>About</h5>
-                        <ul class="list-unstyled text-small">
-                            <li>
+                    <div class="footitem  lastitem">
+       
                                 <a class="text-muted" onclick="about(this)" href="#">About</a>
-                            </li>
 
-                        </ul>
                     </div>
 
 

@@ -38,7 +38,7 @@
     <div class="container">
         <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
             <h5 class="my-0 mr-md-auto font-weight-normal">
-                <a href="#" onclick="window.location.href = 'index.php';">
+                <a href="#" onclick="window.location.href = 'manmenu.php';">
                     <img width="567" height="144" src="listening1.gif" border="0" />
                 </a>
             </h5>
@@ -48,7 +48,7 @@
 
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
             <nav class="my-2 my-md-0 mr-md-3">
-                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                <a href="#" onclick="window.location.href = 'manmenu.php';">Home</a>
                 <!--           <a class="
                 p-2 text-dark" onclick="whoamI(this)" href="#">
                 Massage Therapist's Page

@@ -1,8 +1,75 @@
+<!DOCTYPE html>
+<html class=" js flexbox no-flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg no-smil svgclippaths">
 
 
-<h2>Facts</h2>
+    <head>
+              <style>
+.ui-dialog {
+   top: 300px;
+   left: 500px !important;
+}
+.photo {
+display: flex;
+justify-content: center;
+}
+
+            .header {
+                display: flex;
+            flex-flow: row wrap;
+            font-weight: bold;
+            text-align: center;
+            flex-direction: column;
+            }
+
+            .footrow {
+                display: flex;
+            flex-flow: row wrap;
+            font-weight: bold;
+            text-align: center;
+            flex-direction: row;
+            justify-content: center;
+            }
+            .footer {
+                display: flex;
+  justify-content: space-between;
+            }
+        </style>
+      
+    
+      </head>
+
+<body> 
+      
+<header class="header">
+      
+        <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">
+                <a href="#" onclick="window.location.href = 'index.php';">
+                    <img width="567" height="144" src="listening1.gif" border="0" />
+                </a>
+            </h5>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
+
+
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                <!--           <a class="
+                p-2 text-dark" onclick="whoamI(this)" href="#">
+                Massage Therapist's Page
+            </a>
+
+            <a class="p-2 text-dark" href="Management.php">Management Admin</a>
+            <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
+            <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
+            </nav>
+        </div>
+ </header>
 
 <div align="center">
+<h2>Facts</h2>
+
     <table width="590" border="0" align="center" cellpadding="0" cellspacing="0">
 
 
@@ -26,19 +93,7 @@
                                     <td>
                                         <div align="left">
                                             <p>
-                                                @*<span class="maintitle">
-                                                        <a href="onsitemassage.html" class="maintitle">
-                                                            What    '
-                                                            is On-Site Massage?
-                                                        </a> | <span class="maintitile">
-                                                            <a href="benefits.html" class="maintitle">
-                                                                What   '
-                                                                are the Benefits?
-                                                            </a>
-                                                        </span> | <a href="requirements.html" class="maintitle">Requirements</a>
-                                                        | <a href="facts.html" class="maintitle">Facts</a> <br />
 
-                                                    </span><br />*@
                                                 <span class="maintitle"><b>What is On-Site Massage?</b></span><br />
                                                 <span class="mainer">
                                                     <br />
@@ -92,18 +147,7 @@
                                     <td valign="top">
                                         <div align="left">
                                             <p>
-                                                @*<span class="maintitle">
-                                                        <a href="onsitemassage.html" class="maintitle">
-                                                            What
-                                                            is On-Site Massage?
-                                                        </a> | <span class="maintitile">
-                                                            <a href="benefits.html" class="maintitle">
-                                                                What
-                                                                are the Benefits?
-                                                            </a>
-                                                        </span> | <a href="requirements.html" class="maintitle">Requirements</a>
-                                                        | <a href="facts.html" class="maintitle">Facts</a> <br />
-                                                    </span><br />*@
+
                                                 <span class="maintitle"><b>What are the Benefits?</b></span><br />
                                                 <span class="mainer">
                                                     <br />
@@ -147,18 +191,7 @@
                                     <td valign="top">
                                         <div align="left">
                                             <p>
-                                                @*<span class="maintitle">
-                                                        <a href="onsitemassage.html" class="maintitle">
-                                                            What
-                                                            is On-Site Massage?
-                                                        </a> | <span class="maintitile">
-                                                            <a href="benefits.html" class="maintitle">
-                                                                What
-                                                                are the Benefits?
-                                                            </a>
-                                                        </span> | <a href="requirements.html" class="maintitle">Requirements</a>
-                                                        | <a href="facts.html" class="maintitle">Facts</a> <br />
-                                                    </span><br />*@
+
                                                 <span class="maintitle"><b>Requirements</b></span><br />
                                                 <span class="mainer">
                                                     <br />
@@ -230,4 +263,6 @@
                             </table>
 
 
+                            </body>
+</html>
 

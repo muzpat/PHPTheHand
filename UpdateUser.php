@@ -18,23 +18,23 @@ try {
             {
                 $dayId = 2;
             }
-            else if (day == "Tuesday")
+            else if ($day == "Tuesday")
             {
                 $dayId = 3;
             }
-            else if (day == "Wednesday")
+            else if ($day == "Wednesday")
             {
                 $dayId = 4;
             }
-            else if (day == "Thursday")
+            else if ($day == "Thursday")
             {
                 $dayId = 5;
             }
-            else if (day == "Friday")
+            else if ($day == "Friday")
             {
                 $dayId = 6;
             }
-            else if (day == "Saturday")
+            else if ($day == "Saturday")
             {
                 $dayId = 7;
             }
