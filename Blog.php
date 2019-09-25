@@ -25,10 +25,72 @@
     <!-- Custom styles for this template -->
     <!--   <link href="pricing.css" rel="stylesheet" />-->
     <style>
-.ui-dialog {
-   top: 300px;
-   left: 500px !important;
-}
+			.ui-dialog {
+				top: 300px;
+				left: 500px !important;
+			}
+
+			.photo {
+				display: flex;
+				justify-content: center;
+			}
+
+			.header {
+				display: flex;
+				flex-flow: row wrap;
+				font-weight: bold;
+				text-align: center;
+				flex-direction: column;
+			}
+
+			.footrow {
+				display: flex;
+				flex-flow: row wrap;
+				font-weight: bold;
+				text-align: center;
+				flex-direction: row;
+				justify-content: center;
+			}
+
+			.footer {
+				display: flex;
+				justify-content: space-between;
+			}
+
+
+		.xrow {
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			flex-direction: row;
+		}
+
+		.row-item {
+			align-content: center;
+		}
+
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.content {
+			flex: 1 0 auto;
+		}
+
+		.footer {
+			flex-shrink: 0;
+		}
+
+		html, body {
+			height: 100%;
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+		}
     </style>
 
 </head>
@@ -36,30 +98,28 @@
 <body>
 
     <div class="container">
-        <div class="d-flex justify-content-center bg-white border-bottom box-shadow">
-            <h5 class="my-0 mr-md-auto font-weight-normal">
-                <a href="#" onclick="window.location.href = 'index.php';">
-                    <img width="567" height="144" src="listening1.gif" border="0" />
-                </a>
-            </h5>
-        </div>
-        <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark"></nav>
+             <header class="header">
+
+                <div class="headitem">
+                    <h5 class="my-0 mr-md-auto font-weight-normal">
+                        <a href="#" onclick="window.location.href = 'manmenu.php'">
+                            <img width="567" height="144" src="listening1.gif" border="0" />
+                        </a>
+                    </h5>
+                </div>
+                <div>
+                    <nav class="my-2 my-md-0 mr-md-3">
+                             <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                        <!-- <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
+
+                        <a class="p-2 text-dark" href="Management.php">Management Admin</a>
+                        <a class="p-2 text-dark" href="Blog.php">Blog</a>
+                        <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a> -->
+                    </nav>
+                </div>
 
 
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-            <nav class="my-2 my-md-0 mr-md-3">
-                <a href="#" onclick="window.location.href = 'index.php';">Home</a>
-                <!--           <a class="
-                p-2 text-dark" onclick="whoamI(this)" href="#">
-                Massage Therapist's Page
-            </a>
-
-            <a class="p-2 text-dark" href="Management.php">Management Admin</a>
-            <a class="p-2 text-dark" href="/Home/Blog">Blog</a>
-            <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
-            </nav>
-
-        </div>
+            </header>
 
         <div class="row mb-2">
             <div class="col-md-6">

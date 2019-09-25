@@ -66,6 +66,13 @@
 				flex-direction: row;
 				/*align-items: center;*/
 			}
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+            .rowx {
+               	flex-direction: column;
+                   justify-content:center;
+            }
+        }
+
         </style>
 
 </head>
@@ -104,6 +111,7 @@
 
 
         <script type="text/javascript">
+            var myParam;
         function getUrlVars() {
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -112,10 +120,21 @@
             return vars;
         }
         $(document).ready(function () {
-            var result3 = getUrlVars();
-         //   console.log("stylist: ", result3["stylist"]);
-            var myParam = result3["stylist"];
-            myParam = decodeURIComponent(myParam);
+        //    var result3 = getUrlVars();
+           
+            var urlParams = new URLSearchParams(window.location.search);
+            console.log("urlParams.get('stylist')", urlParams.get('stylist'));
+
+              var url = window.location;
+
+            var param1 = url.href;
+            console.log("stylist8: ", param1 );
+            myParam = urlParams.get('stylist');
+            console.log("stylist9: ", myParam );
+
+
+            //var myParam = result3["stylist"];
+          //  myParam = decodeURIComponent(myParam);
             $('#mass1').html(myParam);
            // alert("stylist: " + myParam);
           //  console.log("stylist: ", myParam);

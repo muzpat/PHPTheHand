@@ -85,11 +85,11 @@
         <div>
             <nav class="my-2 my-md-0 mr-md-3">
                 <!--<a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>-->
-                <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
+                <!--<a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>-->
 
                 <a class="p-2 text-dark" href="Management.php">Management Admin</a>
                 <a class="p-2 text-dark" href="Blog.php">Blog</a>
-                <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>
+                <!--<a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>-->
             </nav>
         </div>
 

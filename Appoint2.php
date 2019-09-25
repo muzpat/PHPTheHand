@@ -7,6 +7,7 @@
     <meta name="author" content="" />
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
 
+
     <title></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/pricing/" />
@@ -16,93 +17,104 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.position.js"></script>
+          <title>jQuery Mobile: Creating Dialog Box</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>	
     <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" />
     <!--    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" />-->
 
     <!-- Custom styles for this template -->
     <!--   <link href="pricing.css" rel="stylesheet" />-->
-    <style>
-			.ui-dialog {
-				top: 300px;
-				left: 500px !important;
-			}
 
-			.photo {
-				display: flex;
-				justify-content: center;
-			}
+        <style>
+			  	.ui-dialog {
+			  		top: 300px;
+			  		left: 500px !important;
+			  	}
 
-			.header {
-				display: flex;
-				flex-flow: row wrap;
-				font-weight: bold;
-				text-align: center;
-				flex-direction: column;
-			}
+			  	.photo {
+			  		display: flex;
+			  		justify-content: center;
+			  	}
 
-			.footrow {
-				display: flex;
-				flex-flow: row wrap;
-				font-weight: bold;
-				text-align: center;
-				flex-direction: row;
-				justify-content: center;
-			}
+			  	.header {
+			  		display: flex;
+			  		flex-flow: row wrap;
+			  		font-weight: bold;
+			  		text-align: center;
+			  		flex-direction: column;
+			  	}
 
-			.footer {
-				display: flex;
-				justify-content: space-between;
-			}
+			  	.footrow {
+			  		display: flex;
+			  		flex-flow: row nowrap;
+			  		font-weight: bold;
+			  		text-align: center;
+			  		flex-direction: row;
+			  		justify-content: center;
+			  	}
 
-
-			.xrow {
+			  	.footer {
+			  		display: flex;
+			  		justify-content: space-between;
+			  	}
+			.rowx {
 				width: 100%;
 				display: flex;
-				justify-content: space-around;
+				justify-content: space-around; /* Change this */
+				/*flex-wrap: wrap;*/
 				flex-direction: row;
+				/*align-items: center;*/
 			}
-            .row-item {
-                align-content: center;
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+            .rowx {
+               	flex-direction: column;
+                   justify-content:center;
             }
-    </style>
+        }
+
+        </style>
 
 </head>
 
 <body>
-    <header class="header">
+        <header class="header">
 
-        <div class="headitem">
-            <h5 class="my-0 mr-md-auto font-weight-normal">
-                <a href="#" onclick="window.location.href = 'Index.php'">
-                    <img width="567" height="144" src="listening1.gif" border="0" />
-                </a>
-            </h5>
-        </div>
-        <div>
-            <nav class="my-2 my-md-0 mr-md-3">
-                <!--<a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>-->
-                 <!--<a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>-->
+                <div class="headitem">
+                    <h5 class="my-0 mr-md-auto font-weight-normal">
+                        <a href="#" onclick="window.location.href = 'Index.php'">
+                            <img width="567" height="144" src="listening1.gif" border="0" />
+                        </a>
+                    </h5>
+                </div>
+                <div>
+                    <nav class="my-2 my-md-0 mr-md-3">
+                        <a href="#" onclick="window.location.href = 'index.php';">Home</a>
+                        <!-- <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
 
                         <a class="p-2 text-dark" href="Management.php">Management Admin</a>
-                        <!--<a class="p-2 text-dark" href="Blog.php">Blog</a>
-                        <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a>--> 
-            </nav>
-        </div>
+                        <a class="p-2 text-dark" href="Blog.php">Blog</a>
+                        <a class="p-2 text-dark" onclick="whichuser(this)" href="#">Users</a> -->
+                    </nav>
+                </div>
+ 
 
+        </header>
 
-    </header>
         <div class="container">
             <h2 style="align-content:center">
-                Your Appointments:&nbsp;&nbsp;
+                Book with:&nbsp;
                 <label id="mass1"></label>
             </h2>
-            <table class="table table_condensed" id="Grid"></table>
+            <table class="" id="Grid"></table>
         </div>
 
+
         <script type="text/javascript">
+            var myParam;
         function getUrlVars() {
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -111,38 +123,47 @@
             return vars;
         }
         $(document).ready(function () {
-            var myurl = getUrlVars();
-            var myParam = myurl["stylist"];
-            myParam = decodeURIComponent(myParam);
-            console.log("url parameter: ", myParam);
-            var mydata = { stylist: myParam };
-            console.log("stylist.php: ");
+        //    var result3 = getUrlVars();
+           
+            var urlParams = new URLSearchParams(window.location.search);
+            console.log("urlParams.get('stylist')", urlParams.get('stylist'));
+
+              var url = window.location;
+
+            var param1 = url.href;
+            console.log("stylist8: ", param1 );
+            myParam = urlParams.get('stylist');
+            console.log("stylist9: ", myParam );
+
+
+            //var myParam = result3["stylist"];
+          //  myParam = decodeURIComponent(myParam);
             $('#mass1').html(myParam);
+           // alert("stylist: " + myParam);
+          //  console.log("stylist: ", myParam);
+
+            var mydata = { stylist: myParam };
 
             $.ajax({
-                url: 'GetAppointments.php',
+                url: "GetAppointmentPage.php",
                 type: "GET",
                 cache: false,
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
                 data: mydata,
-                cache: false,
                 async: true,
                 success: function (response) {
-                //    console.log(JSON.stringify(JSON.parse(response)));
-              //      var data = $.parseJSON(response);
+                    console.log("ajax successful");
                     console.log(response);
                     var items = response;
-                   // console.log(items.data[0].id);
-                  //  console.log(" items.data.length: ", items.data.length);
-                    var data = response;
                     //    $('#Grid').append('<table><tr><th>Date</th><th>Time</th><th>Stylist</th><th>Customer</th><th>Phone</th><th>Style</th><th>Info</th></tr>');
                     var today = '';
                     var row = '';
                     var laststarttime = 0;
                     var yesterday = ''
-                    row = '<div  id="rw1" class="row">  ';
+                    row = '<div  id="rw1" class="rowx">  ';
                     for (var i = 0; i < items.data.length; ++i) {
+                        console.log("items.data.length: ", items.data.length);
                         if (i == 0) {
 
                             if (items.data[i].dayoftheweek == 1) {
@@ -162,7 +183,6 @@
                             } else {
                                 today = "n/a";
                             }
-                            console.log("today: ", today);
                             yesterday = items.data[i].theday;
                             row = row + '<div>';   /// extra div
                             //column
@@ -197,38 +217,42 @@
                             row = row + '</div> <ul class="list-group list-group-flush"> ';
                             yesterday = items.data[i].theday;
                         }
-                        var customername;
-                        customername = items.data[i].name;
-                        if (customername == 'null' || customername === null) {
-                            customername = '';
+
+                        var situation = items.data[i].time + ':00 ';  // + items.data[i].customer;
+                        if (items.data[i].apptime != 99 && items.data[i].apptime != null) {
+                            console.log("not 99 items.data[i].theday: ", items.data[i].theday);
+                            console.log("not 99 items.data[i].apptime: ", items.data[i].apptime);
+                            situation = items.data[i].time + ':00 ' + " not available";
                         }
-                        var situation = items.data[i].starttime + ':00 ' + customername;
-                    //    console.log("customername: ", customername);
                         if (situation.length > 6) {
                             //  situation = "Not Available";
                         }
-                       // console.log("theday: ", items.data[i].theday);
-                       // console.log("apptime: ", items.data[i].apptime);
-                        var thetime = items.data[i].apptime;
-                        if (items.data[i].apptime == null) {
-                            items.data[i].apptime = '99';
-                        }
-                            row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].apptime.replace(':', '') + '" data-date="' + items.data[i].theday + '" data-phone="' + items.data[i].phone + '" data-info="' + items.data[i].info + '"  data-style="' + items.data[i].style + '"  data-customer="' + items.data[i].name + '"  data-time="' + items.data[i].apptime + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
+                        if (items.data[i].time != 99 && items.data[i].time != null) {
 
-                        laststarttime = items.data[i].apptime;
+                            row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '') + '" data-date="' + items.data[i].theday + '"  data-time="' + items.data[i].time + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
+                        }
+                        laststarttime = items.data[i].time;
                     }
                     row = row + '</div> </div></div>'
                     row = row + '<div>';   /// extra div
                     $('#Grid').append(row);
 
                     for (var i = 0; i < items.data.length; ++i) {
-
-                        var myId = 'a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].apptime.replace(':', '');
-                        $('#' + myId).attr('onClick', 'linkaction(this);');
+                        console.log(items.data[i]);
+                        if (items.data[i].time != null) {
+                            var myId = 'a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '');
+                            //  console.log("myId: ", myId);
+                            $('#' + myId).attr('onClick', 'linkaction(this);');
+                        }
 
                     }
                 },
-                error: OnErrorCall
+                error: function (xhr) {
+                    console.log("ajax fail!", xhr.statusText);
+                    debugger;
+                    alert('Request Status ' + xhr.status + ' Status Text (a) ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+                //error: OnErrorCall
             })
 
         });
@@ -236,18 +260,17 @@
         function dateformat(roughdate) {
 
             var yr = roughdate.substring(0, 4);
-            var mnth = roughdate.substring(4, 6);
+            var mnth = roughdate.substring(4,6 );
             var days = roughdate.substring(6, 8);
             return days + "/" + mnth + "/" + yr;
         }
-
         function OnSuccess(response) {
-            debugger;
+
             var data = $.parseJSON(response);
 
             //   alert(data.BeeHive[0].beeType);
             $('#Grid').append('<table><tr><th>Date</th><th>Time</th><th>Stylist</th><th>Customer</th><th>Phone</th><th>Style</th><th>Info</th></tr>');
-            debugger;
+
             for (var i = 0; i < data.length; ++i) {
                 //                 $('#Grid').append('<div class="name">' + ToJavaScriptDate(data[i].review_date) + ' ' + data[i].review_stage
                 //                     + ' ' + data[i].ops_product_id + ' ' + data[i].ProducT_sub_group_code
@@ -262,9 +285,9 @@
             // myLoop();
         }
         function OnErrorCall(jqXHR, textStatus, errorThrown) {
-            debugger;
-            alert(jqXHR.responseText);
             console.log("error - Ajax call has failed: <br />Err: " + errorThrown + "<br />textStatus: " + textStatus + "<br />ResponseText: " + jqXHR.responseText);
+            alert(jqXHR.responseText);
+            //console.log("error - Ajax call has failed: <br />Err: " + errorThrown + "<br />textStatus: " + textStatus + "<br />ResponseText: " + jqXHR.responseText);
         }
 
         $(".mylink").click(function (e) {
@@ -275,6 +298,7 @@
         });
         function book(name, Phone, Style, Info, e) {
             var myId = e.id;
+            console.log("book: name: ", name);
             var aDate;
             var aTime;
 
@@ -286,15 +310,20 @@
                 if (e.attributes[i].name == 'data-time') {
                     aTime = e.attributes[i].value;
                 }
+
             }
+
+
             var Xexisting = $('#' + myId)
             var existing = $('#' + myId).text();
-            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: '@ViewBag.Stylist', date: aDate, time: aTime }
+            var currstylist = $('#mass1').html();
+            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: currstylist, date: aDate, time: aTime };
+            var displaydata = JSON.stringify(myData);
             existing = existing + ' ' + name;
             $('#' + myId).html(existing);
-
+            console.log("Appointment. About to call ajax...AddAppointment.php", displaydata);
             $.ajax({
-                url: '@Url.Action("AddAppointment", "Home")',
+                url: 'AddAppointment.php',
                 type: 'GET',
                 dataType: 'html',
                 contentType: 'application/json; charset=utf-8',
@@ -302,9 +331,13 @@
                 success: OnSuccess,
                 error: OnErrorCall
             })
+
+
             //  debugger;
         }
+
         function OnSuccess(response) {
+            console.log("Appointment Created on database!");
         }
         function OnErrorCall(jqXHR, textStatus, errorThrown) {
             debugger;
@@ -318,97 +351,48 @@
             //   else{
             //       alert('jQuery.ui loaded');
             //   }
-            var aDate;
-            var aTime;
-            var style;
-            var info;
-            var phone;
-            var customer;
-            for (var i = 0; i < e.attributes.length; ++i) {
-
-                if ( e.attributes[i].name == 'data-date') {
-                    aDate = e.attributes[i].value;
-                }
-                if ( e.attributes[i].name == 'data-time') {
-                    aTime = e.attributes[i].value;
-                }
-                if ( e.attributes[i].name == 'data-style') {
-                    style = e.attributes[i].value;
-                }
-                if ( e.attributes[i].name == 'data-info') {
-                    info = e.attributes[i].value;
-                }
-                if ( e.attributes[i].name == 'data-phone') {
-                    phone = e.attributes[i].value;
-                }
-                if ( e.attributes[i].name == 'data-customer') {
-                    customer = e.attributes[i].value;
-                }
-
-            }
             var ch = e.text.length;
-            if (ch > 115) {
-
+            if (ch > 8) {
                 $('<div></div>').appendTo('body')
-                    .html('<div><h6>' + 'Error '
-                          + '<br/>   <p> </p>'
-       + '</h6></div>')
-                    .dialog({
-                        modal: true, title: 'This Slot Has Been Taken! ', zIndex: 10000, autoOpen: true,
-                        width: 'auto', resizable: false,
-                        buttons: {
-                            Cancel: function () {
-                                $(this).dialog("close");
-                            },
+    .html('<div><h6>' + 'This Slot Has Been Taken!'
+          + '<br/>   <p> </p>'
++ '</h6></div>')
+    .dialog({
+        modal: true, title: 'Error ', zIndex: 10000, autoOpen: true,
+        width: 'auto', resizable: false,
+        buttons: {
+            Cancel: function () {
+                $(this).dialog("close");
+            },
 
-                        },
-                        close: function (event, ui) {
+        },
+        close: function (event, ui) {
 
-                            $(this).remove();
-                        }
-                    });
+            $(this).remove();
+        }
+    });
             } else {
 
                 $('<div></div>').appendTo('body')
-                    .html('<div><h6>' + 'Booker: '
-                          + '<br/>   <p> </p>'
-                          + '<table><tr><td>'
-        + '   <label><b>Name</label>&nbsp</td><td><label">' + customer   + '</label></td></tr><tr>         '
-        + '   <td><label><b>Phone</label></td><td><label>' + phone   + '</label></td></tr><tr>              '
-        + '    <td><label><b>Style/Treatment</label>&nbsp</td> <td><label>' + style + '</label></td></tr><tr>       '
-        + '    <td><label><b>Info for Stylist</label> </td> <td><label> ' + info   + '</label> </td></tr></table>    '
-       + '</h6></div>')
-                    .dialog({
-                        modal: true, title: 'Booking Details ', zIndex: 10000, autoOpen: true,
-                        width: 'auto', resizable: false,
-                        buttons: {
-                            Cancel: function () {
-                                $(this).dialog("close");
-                            },
-                            //Book: function () {
-                            //    var Name = $('#inname').val();
-                            //    var Phone = $('#inphone').val();
-                            //    var Style = $('#instyle').val();
-                            //    var Info = $('#ininfo').val();
-                            //    //   var Name = $('#inname').val();
-                            //    book(Name, Phone, Style, Info, e);
-                            //    $(this).dialog("close");
-                            //}
-                        },
-                        close: function (event, ui) {
-
-                            $(this).remove();
-                        }
-                    });
+                    .html(' <div id="therapistDialog" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">       '
+                            + '<div data-role="header" data-theme="a">                                                                                                                         '
+                            + '<h1>Therapist</h1>                                                                                                                                              '
+                            + '</div>                                                                                                                                                          '
+                            + '<div class="ui-content" role="main">                                                                                                                            '
+                            + '         <select id="masseursx">                                                                                                                            '
+                            + '    </select>                                                                                                                                                   '
+                            + '                                                                                                                                                                '
+                            + '    <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" data-rel="back">Cancel</a>                                                        '
+                            + '      <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" id="mClick"   href="#" data-rel="dialog" data-transition="flow">Book</a>                 '
+                        + '</div>'
+                        + '</div>');
             }
         }
 
         </script>
+
+
 </body>
 </html>
-
-
-
-
 
 

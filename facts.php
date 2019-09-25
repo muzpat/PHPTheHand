@@ -261,7 +261,8 @@ justify-content: center;
                                 </tr>
 
                             </table>
-
+</table>
+                </div>
 
                             </body>
 </html>
