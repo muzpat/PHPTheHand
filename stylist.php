@@ -376,10 +376,10 @@
         + '   <label><b>Name</label>&nbsp</td><td><label">' + customer   + '</label></td></tr><tr>         '
         + '   <td><label><b>Phone</label></td><td><label>' + phone   + '</label></td></tr><tr>              '
         + '    <td><label><b>Style/Treatment</label>&nbsp</td> <td><label>' + style + '</label></td></tr><tr>       '
-        + '    <td><label><b>Info for Stylist</label> </td> <td><label> ' + info   + '</label> </td></tr></table>    '
+        + '    <td><label><b>Info for Stylist</label> </td> <td><label> ' + info   + '</label> </td></tr></table>     '
        + '</h6></div>')
                     .dialog({
-                        modal: true, title: 'Booking Details ', zIndex: 10000, autoOpen: true,
+                        modal: true, title: 'Booking Details2 ', zIndex: 10000, autoOpen: true,
                         width: 'auto', resizable: false,
                         buttons: {
                             Cancel: function () {

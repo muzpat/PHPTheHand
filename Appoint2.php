@@ -81,6 +81,30 @@
 </head>
 
 <body>
+
+  <!-- Stylist Pop up -->
+
+         <div id="therapistDialog" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">
+         <div data-role="header" data-theme="a">
+         <h1>Booking Details</h1>
+         </div>
+         <div><h6>Booker: <br/>   <p> </p>
+          <table><tr><td>
+        <label><b>Name</label>&nbsp</td><td><input type="text" id="inname"</input></td></tr><tr>         
+        <td><label><b>Phone</label></td><td><input type="text" id="inphone"</input></td></tr><tr>              
+         <td><label><b>Style/Treatment</label> </td> <td><input type="text" id="instyle"</input></td></tr><tr>       
+         <td><label><b>Info for Stylist</label> </td> <td><input type="text" id="ininfo"</input> </td></tr></table> 
+                          <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+					<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back"  onClick=' updateappoint(this);' data-transition="flow">Book</a>
+
+       </h6></div>
+     </div> 
+    
+
+
+
+
+
         <header class="header">
 
                 <div class="headitem">
@@ -114,6 +138,8 @@
 
 
         <script type="text/javascript">
+            var myTime;
+            var myDate;
             var myParam;
         function getUrlVars() {
             var vars = {};
@@ -124,6 +150,8 @@
         }
         $(document).ready(function () {
         //    var result3 = getUrlVars();
+
+            $("#therapistDialog").hide();
            
             var urlParams = new URLSearchParams(window.location.search);
             console.log("urlParams.get('stylist')", urlParams.get('stylist'));
@@ -228,24 +256,34 @@
                             //  situation = "Not Available";
                         }
                         if (items.data[i].time != 99 && items.data[i].time != null) {
-
-                            row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '') + '" data-date="' + items.data[i].theday + '"  data-time="' + items.data[i].time + '" href="#" class="mylink" style= "color:blue">' + situation + '</a></li>';
+                            // anchor to click for popup
+                            var aload = items.data[i].theday.toString() + ',' + items.data[i].time.toString();
+                          //  myDate = items.data[i].theday;
+                            row = row + ' <li     class="list-group-item"><a  id="a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '') + '" data-date="' + items.data[i].theday + '"  data-time="' + items.data[i].time + '" href="#therapistDialog" data-rel="popup" onClick="recorddatetime(' + aload + ');" class="mylink" style= "color:blue">' + situation + '</a></li>';
                         }
                         laststarttime = items.data[i].time;
-                    }
+                    }   // end of loop
                     row = row + '</div> </div></div>'
                     row = row + '<div>';   /// extra div
                     $('#Grid').append(row);
 
                     for (var i = 0; i < items.data.length; ++i) {
-                        console.log(items.data[i]);
+                     //   console.log(items.data[i]);
                         if (items.data[i].time != null) {
                             var myId = 'a' + items.data[i].theday.replace('/', '').replace('/', '') + items.data[i].time.replace(':', '');
-                            //  console.log("myId: ", myId);
-                            $('#' + myId).attr('onClick', 'linkaction(this);');
+                    //          console.log("myId: ", myId);
+                      //     $('#' + myId).attr('onClick', 'linkaction(this);');
+                         //   alert("here!");
+                            $('#' + myId).attr("tap", function() {
+                $.mobile.changePage("#therapistDialog", {
+                  role: "dialog"  // show #page2 as dialog
+                })
+            })
+
                         }
 
                     }
+                         $("#therapistDialog").show();
                 },
                 error: function (xhr) {
                     console.log("ajax fail!", xhr.statusText);
@@ -256,7 +294,15 @@
             })
 
         });
-
+            function recorddatetime(payload, pay2) {
+               console.log("recorddatetime: " , payload);
+               //alert("recorddatetime: " + payload.toString());
+                var myarray = payload.toString().split(",");
+                myTime = pay2; 
+                  console.log("time: " ,myTime);
+                myDate = myarray[0];
+                  console.log("date: " , myDate);
+            }
         function dateformat(roughdate) {
 
             var yr = roughdate.substring(0, 4);
@@ -296,9 +342,10 @@
             debugger;
             alert('here!');
         });
-        function book(name, Phone, Style, Info, e) {
+            function book(name, Phone, Style, Info, e) {
+          //   var inn =    $('#inname').val();
             var myId = e.id;
-            console.log("book: name: ", name);
+            console.log("book: e: ", e);
             var aDate;
             var aTime;
 
@@ -317,7 +364,9 @@
             var Xexisting = $('#' + myId)
             var existing = $('#' + myId).text();
             var currstylist = $('#mass1').html();
-            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: currstylist, date: aDate, time: aTime };
+            console.log("myDate", myDate);
+            console.log("myTime", myTime);
+            var myData = { name: name, phone: Phone, style: Style, info: Info, stylist: currstylist, date: myDate, time: myTime };
             var displaydata = JSON.stringify(myData);
             existing = existing + ' ' + name;
             $('#' + myId).html(existing);
@@ -343,7 +392,21 @@
             debugger;
             alert(jqXHR.responseText);
             console.log("error - Ajax call has failed: <br />Err: " + errorThrown + "<br />textStatus: " + textStatus + "<br />ResponseText: " + jqXHR.responseText);
-        }
+            }
+
+            function updateappoint(e) {
+               
+                               var Name = $('#inname').val();
+                                var Phone = $('#inphone').val();
+                                var Style = $('#instyle').val();
+                                var Info = $('#ininfo').val();
+                                //   var Name = $('#inname').val();
+                                book(Name, Phone, Style, Info, e);
+
+
+            }
+
+
         function linkaction(e) {
             //   if (typeof jQuery.ui != 'undefined') {
             //       alert('no UI!!');
@@ -351,6 +414,8 @@
             //   else{
             //       alert('jQuery.ui loaded');
             //   }
+         //   alert("linkaction");
+             console.log("linkaction: ", e.text.length);
             var ch = e.text.length;
             if (ch > 8) {
                 $('<div></div>').appendTo('body')
@@ -372,7 +437,9 @@
         }
     });
             } else {
-
+                 var Name1 = $('#masseurs').find(":selected").text();
+                     console.log("linkaction about to chg pages: ", Name1);
+/*
                 $('<div></div>').appendTo('body')
                     .html(' <div id="therapistDialog" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">       '
                             + '<div data-role="header" data-theme="a">                                                                                                                         '
@@ -386,6 +453,48 @@
                             + '      <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" id="mClick"   href="#" data-rel="dialog" data-transition="flow">Book</a>                 '
                         + '</div>'
                         + '</div>');
+                        */
+
+                /*
+                   $('.popup').dialog({
+                        buttons: {
+                            Cancel: function () {
+                                $(this).dialog("close");
+                            },
+                            Book: function () {
+                            //    var Name = $('#masseurs').find(":selected").text();
+                                var Name = "Tina Sparkle";
+                                if (Name === null) {
+                                    Name = "Tina Sparkle";
+                                }
+                                if (Name == "Anyone Available") {
+                                    window.location.href = 'Anyone.php' + '?stylist=' + Name;
+                                } else {
+                                    window.location.href = 'Appointment.php' + '?stylist=' + Name;
+                                }
+
+
+                                $(this).dialog("close");
+                            }
+                        },
+                        close: function (event, ui) {
+
+                            $(this).remove();
+                        },
+                        title: 'Choose Therapist',
+                        width: 250,
+                        height: 200,
+                        my: "center",
+                        at: "center",
+                        of: window
+                    });
+                    */
+
+                alert("clicked");
+                     window.location.href = 'CreateAppoint.php' + '?stylist=' + "Tina Sparkle";
+                 console.log("linkaction popup complete!: ", Name1);
+
+
             }
         }
 

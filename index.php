@@ -111,6 +111,7 @@
                 </div>
                 <div>
                     <nav class="my-2 my-md-0 mr-md-3">
+                                      <button id="webtoggle"   onclick="window.location.href = 'Index1.php'">Mobile</button>
                         <a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>
                         <!-- <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
 
@@ -124,7 +125,7 @@
             </header>
 
             <div class="photo">
-                <img src="backmassage.png" alt="Smiley face" height="315" width="468" />
+                <img src="/images/backmassage.png" alt="Smiley face" height="315" width="468" />
             </div>
             <div class="container">
                 <div class="card-deck footrow">

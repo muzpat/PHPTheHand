@@ -125,25 +125,9 @@
 </head>
 
 <body>
-        <div id="wr1" class="wrapper">
-        <div id="content" class="content">
-    <header class="header">
-
-        <div class="headitem">
-            <h5 class="my-0 mr-md-auto font-weight-normal">
-                <a href="#" onclick="window.location.href = 'Index.php'">
-                    <img width="567" height="144" src="listening1.gif" border="0" />
-                </a>
-            </h5>
-        </div>
-        <div>
-            <nav class="my-2 my-md-0 mr-md-3">
 
 
-                     <a id="openDialog" href="#therapistDialog" data-rel="popup"     class="p-2 text-dark" style="font-size:x-large">Make A Booking</a>
-               
-
-                        <div id="therapistDialog" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">
+                            <div id="therapistDialog" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">
                             <div data-role="header" data-theme="a">
                             <h1>Therapist</h1>
                             </div>
@@ -164,7 +148,32 @@
                                 <!--<a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" id="mClick"  onclick="messeurs_clicked(this);" href="Appointment.php?stylist=" data-rel="external" data-transition="flow">Book</a>-->
                                   <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" id="mClick"   href="#" data-rel="dialog" data-transition="flow">Book</a>
                             </div>
-                        </div>
+                        </div>  
+        <div id="wr1" class="wrapper">
+        <div id="content" class="content">
+    <header class="header">
+
+        <div class="headitem">
+            <h5 class="my-0 mr-md-auto font-weight-normal">
+                <a href="#" onclick="window.location.href = 'Index.php'">
+                    <img width="567" height="144" src="listening1.gif" border="0" />
+                </a>
+            </h5>
+        </div>
+        <div>
+            <nav class="my-2 my-md-0 mr-md-3">
+                 <div class="card-deck footrow">
+                   <div class="mb-4">
+                         <div class="mb-4">
+                              <button id="webtoggle"  class="btn btn-lg btn-block btn-primary"  onclick="window.location.href = 'Index.php'">Web</button>
+                                   <a id="openDialog" href="#therapistDialog" data-rel="popup"     class="p-2 text-dark" style="font-size:x-large">Make A Booking</a>
+                             </div>
+                             </div>
+                       </div>
+               
+
+                <!-- dialogue was here-->
+
                  </nav>
                 </div>
                </header>
@@ -174,17 +183,22 @@
 
 
     <div class="photo">
-        <img src="backmassage.png" alt="Smiley face" height="315" width="468" />
+        <img src="/images/backmassage.png" alt="Smiley face" height="315" width="468" />
+        
     </div>
+
     <div class="container">
         <div class="card-deck footrow">
-            <div class=" mb-4 ">
+            
+            <div class="mb-4">
 
+              
 
                 <div class="card-body">
                                   <button type="button"  class="btn btn-lg btn-block btn-primary">  <a href="#popupMass" data-rel="popup">On-Site Massage</a></button>
                
                     <div data-role = "popup" id = "popupMass" class = "ui-content" data-theme = "a">
+                           
                     
 <div align="center">
 <h2>Facts</h2>

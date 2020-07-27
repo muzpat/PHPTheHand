@@ -341,7 +341,8 @@
             alert(jqXHR.responseText);
             console.log("error - Ajax call has failed: <br />Err: " + errorThrown + "<br />textStatus: " + textStatus + "<br />ResponseText: " + jqXHR.responseText);
         }
-        function linkaction(e) {
+            function linkaction(e) {
+        
             //   if (typeof jQuery.ui != 'undefined') {
             //       alert('no UI!!');
             //   }
@@ -380,7 +381,7 @@
         + '    <td><label><b>Info for Stylist</label> </td> <td><input type="text" id="ininfo"</input> </td></tr></table>    '
        + '</h6></div>')
                     .dialog({
-                        modal: true, title: 'Booking Details ', zIndex: 10000, autoOpen: true,
+                        modal: true, title: 'Booking Details1 ', zIndex: 10000, autoOpen: true,
                         width: 'auto', resizable: false,
                         buttons: {
                             Cancel: function () {
