@@ -85,7 +85,7 @@
         <div>
             <nav class="my-2 my-md-0 mr-md-3">
                 <!--<a class="p-2 text-dark" onclick="linkaction(this)" style="font-size:x-large" href="#">Make a Booking</a>-->
-                <!--<a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>-->
+                <a class="p-2 text-dark" onclick="whoamI(this)" href="#">Massage Therapist's Page</a>
 
                 <a class="p-2 text-dark" href="Management.php">Management Admin</a>
                 <a class="p-2 text-dark" href="Blog.php">Blog</a>
@@ -100,11 +100,27 @@
             <h5>All Bookings</h5>
             <table class="table table_condensed" id="Grid"></table>
         </div>
+        
+        <div id="loviz" class="popup">
+
+<select id="masseurs">
+    <?php
+require 'getstylists.php';
+$mass =getStylists();
+foreach ($mass as $mas) {
+echo "<option id = '".$mas['id']."'>".$mas['name']."</option>";
+}
+
+
+    ?>
+</select>
+</div>
 
         <script type="text/javascript">
             var Todayx = '<?php     echo date("d/m/Y")   ?>';
 
             $(document).ready(function () {
+                $("#loviz").hide();
                 $.ajax({
                     type: "POST",
                     cache: false,
@@ -175,6 +191,10 @@
                         today = "n/a";
                     }
                     console.log(" today: ", Todayx);
+                    var myNullChk = items.data[i].appdate;
+                    if (myNullChk === null) {
+                        myNullChk = 0;
+                    }
 
                     var datecmp = dateformat(items.data[i].appdate);
                     console.log(" datecmp: ", datecmp);
@@ -219,12 +239,51 @@
             }
 
             function dateformat(roughdate) {
-
+                if (roughdate != null)
+                {
                 var yr = roughdate.substring(0, 4);
                 var mnth = roughdate.substring(4, 6);
                 var days = roughdate.substring(6, 8);
+                } else {
+                    yr = '';
+                    mnth = '';
+                    days = '';
+                }
                 return days + "/" + mnth + "/" + yr;
             }
+            function whoamI(e) {
+                $("#loviz").show();
+$('.popup').dialog({
+    buttons: {
+        Cancel: function () {
+            $(this).dialog("close");
+        },
+        Appointments: function () {
+            var Name = $('#masseurs').find(":selected").text();
+
+            if (Name === null) {
+                Name = "Tina Sparkle";
+            }
+            if (Name == "Anyone Available") {
+                window.location.href = 'Anyone.php' + '?stylist=' + Name;
+            } else {
+                window.location.href = 'Stylist.php' + '?stylist=' + Name;
+            }
+
+
+            $(this).dialog("close");
+        }
+    },
+    close: function (event, ui) {
+
+        $(this).remove();
+    },
+    title: 'Choose Therapist',
+    width: 380,
+    height: 200,
+});
+
+}
 
         </script>
 

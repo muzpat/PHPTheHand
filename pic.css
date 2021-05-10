@@ -1,0 +1,87 @@
+.mybody {
+
+ background: url(./images/backmassage.png)   !important;;
+ background-size:cover  !important;
+ height: 100%;
+ }
+ .mycentre {
+     
+     text-align: center;
+     vertical-align: middle;
+ }
+ .mylabel {
+     /* background-color: none;
+  
+     vertical-align: middle;
+     margin: 0 auto; */
+     font-size:  80pt;
+     color:  white;
+     text-align: center;
+ }
+ .mylink {
+  /* background-color: none;
+
+  vertical-align: middle;
+  margin: 0 auto; */
+  font-size:  20pt;
+  color:  white;
+  text-align: center;
+}
+ .button10 {
+  
+  width: 30%;
+  text-align: center;
+  }
+ .top {
+  
+     height: 400px;
+     margin: 0 auto;
+ 
+   /* background-color: #B2D6FF;    /* Medium blue */  */
+ }
+ .content {
+  font-size:  XX-Large;
+     height: 500px;
+   /* background-color: #F5CF8E;    Yellow */
+   /* margin: 0 auto; */
+   vertical-align: middle;
+
+   font: large;
+   display: flex;
+
+   height: 300px;
+
+ justify-content: center  !important;
+ flex-direction: column !important;
+ align-items: center;
+ }
+ 
+ .footer {
+    
+     height: 200px;
+   background-color: green;    /* Light blue */
+ }
+ .container {
+  
+     width: 100%  !important;
+     margin: 0 auto  !important;
+ }
+ .checker {
+
+  border-color:  black;
+     font: large;
+     display: flex;
+  
+     height: 300px;
+ 
+   justify-content: center  !important;
+   flex-direction: column !important;
+ }
+ #divtitle, #divdrop {
+  display: flex;
+  justify-content: center  !important;
+  flex-direction: row;
+  align-items: center;
+ }
+ optgroup {      font-size:   80pt; }
+

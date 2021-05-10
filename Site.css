@@ -17,3 +17,38 @@ body {
 	flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
 	padding: 20px;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.menu {
+	height: 100px;
+	background-color: #B2D6FF;    /* Medium blue */
+}
+
+.sidebar {
+	height: 300px;
+	background-color: #F09A9D;    /* Red */
+}
+
+.content {
+	height: 500px;
+	background-color: #F5CF8E;    /* Yellow */
+}
+
+.footer {
+	height: 200px;
+	background-color: #D6E9FE;    /* Light blue */
+}
+
+input, textarea {
+	font    : 1.4em/1.5em "handwriting", cursive, sans-serif;
+	border  : none;
+	padding : 0 10px;
+	margin  : 0;
+	width   : 80%;
+	background : none;
+}
