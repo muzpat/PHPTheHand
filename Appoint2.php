@@ -111,6 +111,7 @@
                         </td>
                         <td style="background-color: white;"><input style="background-color: white;color:black;"  type="text" id="inname" </input></td>
                     </tr>
+                    
                     <tr>
                         <td><label style="color:black; font-weight:normal">Phone</label></td>
                         <td style="background-color: white;"><input style="background-color: white;color:black;" type="text" id="inphone" </input></td>

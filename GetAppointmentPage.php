@@ -14,6 +14,7 @@
             }
         }
 
+        
        // echo '</br>' .$id;
         $host = '213.171.200.101:3306';
         $dbname = 'TheHand';
